@@ -1,1 +1,10 @@
+# Gitignore based on https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+
+# Powershell files for startup/testing
 *.ps1
