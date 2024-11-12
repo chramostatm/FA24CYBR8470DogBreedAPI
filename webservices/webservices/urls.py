@@ -15,14 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from dogapi.views import DogViewSet
-from dogapi.views import BreedViewSet
-
+from django.urls import path, include
+from dogapi.views import DogViewSet, BreedViewSet
+from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
+router.register(r'api/dogs', DogViewSet)
+router.register(r'api/breeds', BreedViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/dog', DogViewSet.as_view({'get, post':'list'})),#GET (list), POST
-    path('api/dog/<id>', DogViewSet.as_view({'get':'retrieve', 'put':'update', 'delete':'destroy'})),#GET, PUT, DELETE
-    path('api/breeds', BreedViewSet.as_view({'get, post':'list'})),#GET (list), POST
-    path('api/dog/<id>', BreedViewSet.as_view({'get':'retrieve', 'put':'update', 'delete':'destroy'})),#GET, PUT, DELETE
+    path('', include(router.urls)),
+    
+    
 ]
