@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/dogapp
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  
+
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=dogapp_db
+      - POSTGRES_USER=tchramosta
+      - POSTGRES_PASSWORD=changeLater
