@@ -9,10 +9,8 @@ from .models import Dog
 from .models import Breed
 # Create your views here.
 #ViewSets based on https://www.django-rest-framework.org/api-guide/viewsets/
-class DogViewSet(viewsets.ViewSet):
-    """
-    A simple ViewSet for listing or retrieving users.
-    """
+""" class DogViewSet(viewsets.ViewSet):
+
     def list(self, request):
         queryset = Dog.objects.all()
         serializer = DogSerializer(queryset, many=True)
@@ -37,9 +35,7 @@ class DogViewSet(viewsets.ViewSet):
             pass
         return Response(status=status.HTTP_204_NO_CONTENT)
 class BreedViewSet(viewsets.ViewSet):
-    """
-    A simple ViewSet for listing or retrieving users.
-    """
+    
     def list(self, request):
         queryset = Breed.objects.all()
         serializer = BreedSerializer(queryset, many=True)
@@ -63,5 +59,13 @@ class BreedViewSet(viewsets.ViewSet):
         except:
             pass
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
+   """  
 
+class DogViewSet(viewsets.ModelViewSet):
+    queryset = Dog.objects.all()
+    serializer_class = DogSerializer
+
+
+class BreedViewSet(viewsets.ModelViewSet):
+    queryset = Breed.objects.all()
+    serializer_class = BreedSerializer
