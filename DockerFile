@@ -1,14 +1,14 @@
 FROM python:3.8
 
-WORKDIR /dogapp
+WORKDIR /DogBreedAPI
 
 # copy requirements file into dogapp directory
-COPY requirements.txt /dogapp/
+COPY requirements.txt /DogBreedAPI/
 
 
 RUN pip install -r requirements.txt
 
 # copy project files into container app directory
-COPY ./webservices/ /dogapp/
+COPY ./webservices/ /DogBreedAPI/
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver"]
