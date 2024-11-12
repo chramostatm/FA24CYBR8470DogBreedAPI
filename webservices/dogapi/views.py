@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework import status
 from .serializers import DogSerializer
 from .serializers import BreedSerializer
 from .models import Dog
 from .models import Breed
 # Create your views here.
-#ViewSets https://www.django-rest-framework.org/api-guide/viewsets/
+#ViewSets based on https://www.django-rest-framework.org/api-guide/viewsets/
 class DogViewSet(viewsets.ViewSet):
     """
     A simple ViewSet for listing or retrieving users.
@@ -19,22 +20,22 @@ class DogViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None):
         queryset = Dog.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = DogSerializer(user)
+        dog = get_object_or_404(queryset, pk=pk)
+        serializer = DogSerializer(dog)
         return Response(serializer.data)
     
-    def add(self, request, pk=None):
+    def update(self, request, pk=None):
+        Dog.objects.create(request)
+        return Response(status=status.HTTP_200_OK)
+    
+    def destroy(self, request, pk=None):
         queryset = Dog.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = DogSerializer(user)
-        return Response(serializer.data)
-    
-    def remove(self, request, pk=None):
-        queryset = Dog.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = DogSerializer(user)
-        return Response(serializer.data)
-    
+        try:
+            dog = get_object_or_404(queryset, pk=pk)
+            Dog.objects.delete(dog)
+        except:
+            pass
+        return Response(status=status.HTTP_204_NO_CONTENT)
 class BreedViewSet(viewsets.ViewSet):
     """
     A simple ViewSet for listing or retrieving users.
@@ -46,18 +47,21 @@ class BreedViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None):
         queryset = Breed.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = BreedSerializer(user)
+        breed = get_object_or_404(queryset, pk=pk)
+        serializer = BreedSerializer(breed)
         return Response(serializer.data)
     
-    def add(self, request, pk=None):
-        queryset = Dog.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = DogSerializer(user)
-        return Response(serializer.data)
+    def update(self, request):
+        Breed.objects.create(request)
+        return Response(status=status.HTTP_200_OK)
     
-    def remove(self, request, pk=None):
-        queryset = Dog.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = DogSerializer(user)
-        return Response(serializer.data)
+    def destroy(self, request, pk=None):
+        queryset = Breed.objects.all()
+        try:
+            breed = get_object_or_404(queryset, pk=pk)
+            Breed.objects.delete(Breed)
+        except:
+            pass
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
