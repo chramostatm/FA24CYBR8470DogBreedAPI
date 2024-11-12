@@ -75,16 +75,9 @@ class DogViewSet(viewsets.ModelViewSet):
 class BreedViewSet(viewsets.ModelViewSet):
     queryset = Breed.objects.all()
     serializer_class = BreedSerializer
-
-    def update(self, request, pk=None):
-        Breed.objects.create(request)
-        return Response(status=status.HTTP_200_OK)
     
     def destroy(self, request, pk=None):
         queryset = Breed.objects.all()
-        try:
-            breed = get_object_or_404(queryset, pk=pk)
-            Breed.objects.delete(Breed)
-        except:
-            pass
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        breed = get_object_or_404(queryset, pk=pk)
+        Breed.delete(breed)
+        return Response(status=status.HTTP_204_NO_CONTENT) 

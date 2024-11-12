@@ -23,8 +23,5 @@ router.register(r'api/dogs', DogViewSet)
 router.register(r'api/breeds', BreedViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/dogs/<int:pk>', DogViewSet.as_view({'put':'update', 'delete':'destroy'})),#GET, PUT, DELETE
     path('', include(router.urls)),
-
-    
 ]
