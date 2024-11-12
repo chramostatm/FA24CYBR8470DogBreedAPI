@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xc(q3)oi!m%-7ckwca8ssj0*ax#ab4iex@**+f#=msg1&y=llw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -76,10 +76,17 @@ WSGI_APPLICATION = 'webservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# Refacto to postgres https://docs.djangoproject.com/en/5.1/ref/databases/
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        #match docker compose db environment
+        'NAME': 'dogapi_db',
+        'USER': 'tchramosta',
+        'PASSWORD':'changelater',
+        'HOST': 'db',
+        'PORT': '5432',
+
     }
 }
 

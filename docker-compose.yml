@@ -18,6 +18,6 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=dogapp_db
+      - POSTGRES_DB=dogapi_db
       - POSTGRES_USER=tchramosta
       - POSTGRES_PASSWORD=changeLater
