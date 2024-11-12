@@ -1,20 +1,26 @@
 from django.db import models
 #Choices
 # https://docs.djangoproject.com/en/5.0/ref/models/fields/#enumeration-types
-SIZE_CHOICES = {
-    "T": "Tiny",
-    "S": "Small",
-    "M":"Medium",
-    "L":"Large",
-}
-Gender ={
-    "M":"Male",
-    "F":"Female",
-    "U":"Unknown",
-}
+SIZE_CHOICES = [
+    ("T", "Tiny"),
+    ("S", "Small"),
+    ("M","Medium"),
+    ("L","Large"),
+]
+Gender = [
+    ("M","Male"),
+    ("F","Female"),
+    ("U","Unknown"),
+]
 
-def get_scale():
-    return {i: i for i in range(1,6) }
+get_scale= [
+    (1,1),
+    (2,2),
+    (3,3),
+    (4,4),
+    (5,5),
+]
+
 # Create your models here.
 #Breed Model
 class Breed(models.Model):
