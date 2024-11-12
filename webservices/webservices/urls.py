@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from dogapi.views import DogViewSet
+from dogapi.views import BreedViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path(''),
+    path('api/dog', DogViewSet.as_view({'get, post':'list'})),#GET (list), POST
+    path('api/dog/<id>', DogViewSet.as_view({'get':'retrieve', 'put':'add', 'delete':'remove'})),#GET, PUT, DELETE
+    path('api/breeds', BreedViewSet.as_view({'get, post':'list'})),#GET (list), POST
+    path('api/dog/<id>', BreedViewSet.as_view({'get':'retrieve', 'put':'add', 'delete':'remove'})),#GET, PUT, DELETE
 ]
