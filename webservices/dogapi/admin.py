@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Dog
-from .models import Breeds
+from .models import Breed
 class DogAdmin(admin.ModelAdmin):
     # Define the list of fields to display in the admin interface
     list_display = ('name', 'age', 'breed')
@@ -25,4 +25,4 @@ class BreedsAdmin(admin.ModelAdmin):
 
 # Register the model and admin class
 admin.site.register(Dog, DogAdmin)
-admin.site.register(Breeds, BreedsAdmin)
+admin.site.register(Breed, BreedsAdmin)

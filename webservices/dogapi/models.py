@@ -17,7 +17,7 @@ def get_scale():
     return {i: i for i in range(1,6) }
 # Create your models here.
 #Breed Model
-class Breeds(models.Model):
+class Breed(models.Model):
     name= models.CharField(max_length=100)
     size = models.CharField(max_length=100,choices=SIZE_CHOICES)
     friendliness =models.IntegerField(choices=get_scale)
@@ -30,7 +30,7 @@ class Breeds(models.Model):
 class Dog(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
-    breed = models.ForeignKey(Breeds,on_delete=models.CASCADE, null=True, blank=True)
+    breed = models.ForeignKey(Breed,on_delete=models.CASCADE, null=True, blank=True)
     gender =models.CharField(max_length=100, choices=Gender)
     color = models.CharField(max_length=100)
     favoritefood = models.CharField(max_length=100)

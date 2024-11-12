@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Dog
-from .models import Breeds
+from .models import Breed
 
 class DogSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,5 +9,5 @@ class DogSerializer(serializers.ModelSerializer):
 
 class BreedsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Breeds
+        model = Breed
         fields = ['id', 'name', 'age', 'breed','owner']
