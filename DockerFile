@@ -8,7 +8,8 @@ COPY requirements.txt /DogBreedAPI/
 
 RUN pip install -r requirements.txt
 
+EXPOSE 8000
 # copy project files into container app directory
 COPY ./webservices/ /DogBreedAPI/
 
-CMD ["python", "manage.py", "runserver"]
+CMD ["./run.sh"]
