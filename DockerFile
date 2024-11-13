@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.11
 
 WORKDIR /DogBreedAPI
 
@@ -12,4 +12,4 @@ EXPOSE 8000
 # copy project files into container app directory
 COPY ./webservices/ /DogBreedAPI/
 
-CMD ["./run.sh"]
+CMD ["sh","./run.sh"]

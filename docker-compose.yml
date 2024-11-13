@@ -4,11 +4,12 @@ services:
 
   web:
     build: .
-    command: ./run.sh
+    command: sh ./run.sh
     volumes:
       - .:/dogapi
     ports:
-      - "8000:8000"
+      - 8000:8000 # HTTP port
+      - 5432:5432 # DB port
     depends_on:
       - db
   db:
