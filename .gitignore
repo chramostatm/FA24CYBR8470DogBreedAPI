@@ -5,6 +5,6 @@
 **/__pycache__
 db.sqlite3
 media
-
+data
 # Powershell files for startup/testing
 *.ps1
