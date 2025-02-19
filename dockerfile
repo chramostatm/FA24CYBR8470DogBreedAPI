@@ -13,3 +13,4 @@ EXPOSE 8000
 COPY ./webservices/ /DogBreedAPI/
 
 CMD ["sh","./run.sh"]
+
